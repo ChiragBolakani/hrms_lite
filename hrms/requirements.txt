@@ -1,7 +1,7 @@
 asgiref==3.11.1
 certifi==2026.2.25
 charset-normalizer==3.4.4  
-Django==6.0.2
+Django>=5.0
 djangorestframework==3.16.1
 Faker==40.5.1
 idna==3.11
@@ -11,3 +11,4 @@ requests==2.32.5
 sqlparse==0.5.5
 tzdata==2025.3
 urllib3==2.6.3
+django-cors-headers>=4.3.0
