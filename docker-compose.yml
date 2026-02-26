@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./hrms
+      dockerfile: Dockerfile
+    container_name: hrms_backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_NAME=${DB_NAME:-hrms_lite}
+      - DB_USER=${DB_USER:-avnadmin}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=${DB_HOST:-localhost}
+      - DB_PORT=${DB_PORT:-5432}
+      - SECRET_KEY=${SECRET_KEY:-django-insecure-bew)51&6z008r_*gsp3@0oejwfuf-nt1almpd1b4npeg^p6br@}
+      - DEBUG=${DEBUG:-False}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS:-localhost,127.0.0.1}
+      - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS:-http://localhost:3000,http://localhost}
+    volumes:
+      - ./hrms:/app
+    command: sh -c "python manage.py migrate && gunicorn --bind 0.0.0.0:8000 --workers 3 hrms.wsgi:application"
+    networks:
+      - hrms_network
+
+  frontend:
+    build:
+      context: ./hrms_frontend
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_BASE_URL=${VITE_API_BASE_URL:-/api/v1}
+    container_name: hrms_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - hrms_network
+
+networks:
+  hrms_network:
+    driver: bridge
+
