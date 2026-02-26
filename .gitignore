@@ -15,4 +15,4 @@ Thumbs.db
 .vscode/
 
 .venv/
-.docker-compose.prod.yml
+docker-compose.prod.yml
