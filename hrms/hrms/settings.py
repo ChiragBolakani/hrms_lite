@@ -35,8 +35,9 @@ allowed_hosts = os.getenv('ALLOWED_HOSTS', '').strip()
 if allowed_hosts:
     ALLOWED_HOSTS = [host.strip() for host in allowed_hosts.split(',') if host.strip()]
 else:
-    # Default: allow localhost and Docker internal networking
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'backend']
+    # Default: allow localhost, Docker internal networking, and common production IPs
+    # In production, always set ALLOWED_HOSTS via environment variable
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'backend', '35.244.45.12']
 
 
 # Application definition
