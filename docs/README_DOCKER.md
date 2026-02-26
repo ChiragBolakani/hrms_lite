@@ -14,8 +14,8 @@ This project is now dockerized and ready for deployment on GCP VM or any Docker-
 
 ### Deployment Files
 - `deploy.sh` - Deployment script for GCP VM
-- `GCP_DEPLOYMENT.md` - Complete GCP deployment guide
-- `DOCKER_README.md` - Docker usage documentation
+- `docs/GCP_DEPLOYMENT.md` - Complete GCP deployment guide
+- `docs/README_DOCKER.md` - Docker usage documentation
 - `.env.example` - Environment variables template
 
 ### Updated Files
@@ -56,7 +56,7 @@ This project is now dockerized and ready for deployment on GCP VM or any Docker-
 
 ## For GCP Deployment
 
-See `GCP_DEPLOYMENT.md` for detailed instructions on deploying to GCP VM.
+See [GCP Deployment Guide](./GCP_DEPLOYMENT.md) for detailed instructions on deploying to GCP VM.
 
 ## Important Notes
 
@@ -80,7 +80,7 @@ See `GCP_DEPLOYMENT.md` for detailed instructions on deploying to GCP VM.
 
 1. Test locally with `docker-compose up`
 2. Create GCP VM instance
-3. Follow `GCP_DEPLOYMENT.md` for deployment
+3. Follow [GCP Deployment Guide](./GCP_DEPLOYMENT.md) for deployment
 4. Set up SSL certificate (Let's Encrypt)
 5. Configure monitoring and backups
 
